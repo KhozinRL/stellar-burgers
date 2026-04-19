@@ -14,9 +14,6 @@ export const Profile: FC = () => {
     password: ''
   });
 
-  console.log('User value ', user);
-  console.log('Form value ', formValue);
-
   useEffect(() => {
     setFormValue((prevState) => ({
       ...prevState,

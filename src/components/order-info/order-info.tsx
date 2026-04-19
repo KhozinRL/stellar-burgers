@@ -23,8 +23,6 @@ export const OrderInfo: FC = () => {
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
-    console.log('order data: ', orderData);
-    console.log('ingr len: ', ingredients.length);
     if (!orderData || !ingredients.length) return null;
 
     const date = new Date(orderData.createdAt);
@@ -65,7 +63,6 @@ export const OrderInfo: FC = () => {
     };
   }, [orderData, ingredients]);
 
-  console.log('order info: ', orderInfo);
   if (!orderInfo) {
     return <Preloader />;
   }

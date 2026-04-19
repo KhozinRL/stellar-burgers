@@ -71,12 +71,6 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload;
-        console.log(
-          'User login is fullfilled: ' +
-            state.user.name +
-            ' ' +
-            state.user.email
-        );
         state.isLoading = false;
         state.isAuthenticated = true;
         state.isAuthChecked = true;
