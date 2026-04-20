@@ -7,26 +7,12 @@ import { getOrderByNumberApi, orderBurgerApi } from '@api';
 type ConstructorState = {
   bun: TIngredient | null;
   ingredients: TConstructorIngredient[];
-  order: TOrder | null;
-  isLoading: boolean;
-  error: string | null;
 };
 
 const initialState: ConstructorState = {
   bun: null,
-  ingredients: [],
-  order: null,
-  isLoading: false,
-  error: null
+  ingredients: []
 };
-
-export const sendOrder = createAsyncThunk(
-  'order/create',
-  async (data: string[]) =>
-    orderBurgerApi(data)
-      .then((response) => getOrderByNumberApi(response.order.number))
-      .then((response) => response.orders[0])
-);
 
 const burgerConstructorSlice = createSlice({
   name: 'burgerConstructor',
@@ -67,21 +53,6 @@ const burgerConstructorSlice = createSlice({
     },
 
     clearConstructor: () => initialState
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(sendOrder.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(sendOrder.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.order = action.payload;
-      })
-      .addCase(sendOrder.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message ?? null;
-      });
   },
   selectors: {
     selectConstructorItems: (state) => state,

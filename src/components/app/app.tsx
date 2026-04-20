@@ -57,10 +57,12 @@ const App = () => {
           <Routes location={background || location}>
             <Route path='/' element={<ConstructorPage />} />
             <Route path='/feed' element={<Feed />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/forgot-password' element={<ForgotPassword />} />
-            <Route path='/reset-password' element={<ResetPassword />} />
+            <Route element={<ProtectedRoute onlyUnAuth />}>
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/forgot-password' element={<ForgotPassword />} />
+              <Route path='/reset-password' element={<ResetPassword />} />
+            </Route>
             <Route path='/profile' element={<ProtectedRoute />}>
               <Route index element={<Profile />} />
               <Route path='orders' element={<ProfileOrders />} />

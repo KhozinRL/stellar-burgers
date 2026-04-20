@@ -5,6 +5,7 @@ import feed from '../slices/feedsSlice';
 import user from '../slices/userSlice';
 import profileOrders from '../slices/profileOrdersSlice';
 import orderDetails from '../slices/orderDetailsSlice';
+import order from '../slices/orderSlice';
 
 import {
   TypedUseSelectorHook,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   feed,
   user,
   profileOrders,
-  orderDetails
+  orderDetails,
+  order
 });
 
 const store = configureStore({
