@@ -1,15 +1,14 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { TIngredient, TConstructorIngredient, TOrder } from '@utils-types';
-import { getOrderByNumberApi, orderBurgerApi } from '@api';
+import { TIngredient, TConstructorIngredient } from '@utils-types';
 
 type ConstructorState = {
   bun: TIngredient | null;
   ingredients: TConstructorIngredient[];
 };
 
-const initialState: ConstructorState = {
+export const initialState: ConstructorState = {
   bun: null,
   ingredients: []
 };
